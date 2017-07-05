@@ -59,7 +59,12 @@ class MPDialog: UIView {
             backgroundColor = .red
             print("alertView!")
         case.progressBar:
-            backgroundColor = .yellow
+            backgroundColor = .gray
+            
+            var mpProgressView: MPProgressDialog!            
+            mpProgressView = MPProgressDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+            mpProgressView.progressBar.progress = 1.0
+            self.addSubview(mpProgressView)
             print("progressBar")
         case.actionSheet:
             backgroundColor = .gray
