@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		760A02DF1F0CC514006B048F /* MPDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760A02DE1F0CC514006B048F /* MPDialog.swift */; };
+		760A02E11F0CDAC1006B048F /* MPProgressDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760A02E01F0CDAC1006B048F /* MPProgressDialog.swift */; };
 		763122551F03BFBE005C89D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763122541F03BFBE005C89D2 /* AppDelegate.swift */; };
 		763122571F03BFBE005C89D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763122561F03BFBE005C89D2 /* ViewController.swift */; };
 		7631225A1F03BFBE005C89D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 763122581F03BFBE005C89D2 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		760A02DE1F0CC514006B048F /* MPDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDialog.swift; sourceTree = "<group>"; };
+		760A02E01F0CDAC1006B048F /* MPProgressDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPProgressDialog.swift; sourceTree = "<group>"; };
 		763122511F03BFBE005C89D2 /* MaterialPopup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaterialPopup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		763122541F03BFBE005C89D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		763122561F03BFBE005C89D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		760A02DD1F0CC4FE006B048F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				760A02DE1F0CC514006B048F /* MPDialog.swift */,
+				760A02E01F0CDAC1006B048F /* MPProgressDialog.swift */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
 		763122481F03BFBE005C89D2 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +110,7 @@
 		763122531F03BFBE005C89D2 /* MaterialPopup */ = {
 			isa = PBXGroup;
 			children = (
+				760A02DD1F0CC4FE006B048F /* Sources */,
 				763122541F03BFBE005C89D2 /* AppDelegate.swift */,
 				763122561F03BFBE005C89D2 /* ViewController.swift */,
 				763122581F03BFBE005C89D2 /* Main.storyboard */,
@@ -259,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				760A02DF1F0CC514006B048F /* MPDialog.swift in Sources */,
 				763122571F03BFBE005C89D2 /* ViewController.swift in Sources */,
 				763122551F03BFBE005C89D2 /* AppDelegate.swift in Sources */,
+				760A02E11F0CDAC1006B048F /* MPProgressDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +523,7 @@
 				7631227B1F03BFBE005C89D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7631227C1F03BFBE005C89D2 /* Build configuration list for PBXNativeTarget "MaterialPopupTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +532,7 @@
 				7631227E1F03BFBE005C89D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7631227F1F03BFBE005C89D2 /* Build configuration list for PBXNativeTarget "MaterialPopupUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +541,7 @@
 				763122811F03BFBE005C89D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
