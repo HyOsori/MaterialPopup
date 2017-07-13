@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         self.view.addSubview(dialog)
         self.dialog.mpProgressView?._progressCount?.text = "0%"
         self.dialog.mpProgressView?.counter = 0
-        for i in 0..<100 {
+        for _ in 0..<100 {
             DispatchQueue.global().async {
                 sleep(1)
                 DispatchQueue.main.async {
@@ -47,6 +47,14 @@ class ViewController: UIViewController {
                 }
             }
         }
+        self.dialog.addItem { (dialog) in
+            print("aaaaaaa")
+        }
+        self.dialog.mpProgressView?.cancleBtn.addTarget(self, action: #selector(onClickCancleBtn(_:)), for: .touchUpInside)
+    }
+    
+    func onClickCancleBtn(_ sender: UIButton) {
+        self.dialog.removeFromSuperview()
     }
 
     override func didReceiveMemoryWarning() {

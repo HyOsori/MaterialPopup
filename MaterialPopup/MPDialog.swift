@@ -66,9 +66,9 @@ class MPDialog: UIView {
             print("alertView!")
         case.progressBar:
             backgroundColor = .gray
-            addItem(handler: { (progress) in                
-                self.removeFromSuperview()
-            })
+//            addItem(handler: { (progress) in                
+//                self.removeFromSuperview()
+//            })
             print("progressBar")
         case.actionSheet:
             backgroundColor = .gray
@@ -79,7 +79,7 @@ class MPDialog: UIView {
     func addItem(handler: @escaping ((MPProgressDialog) -> Void)) {
         mpProgressView = MPProgressDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         mpProgressView?.progressTitle = "0%"
-        mpProgressView?.progressBar.progress = 1.0
+//        mpProgressView?.progressBar.progress = 1.0
         mpProgressView?.handler = handler
         addSubview(mpProgressView!)
     }

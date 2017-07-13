@@ -31,6 +31,18 @@ class MPProgressDialog : UIView {
         }
     }
     
+    // cancle button
+//    open var cancleBtn: UIButton{
+//        get {
+//            let tempBtn = UIButton(frame: CGRect(x: progressBar.frame.minX, y: 0, width: UIScreen.main.bounds.width/8,
+//                                                 height: UIScreen.main.bounds.width/24))
+//            tempBtn.backgroundColor = .red
+//            return tempBtn
+//        }
+//    }
+    
+    open var cancleBtn: UIButton!
+    
     open var progressTitle: String? = nil {
         didSet {
             progressLabel.text = progressTitle!
@@ -70,10 +82,15 @@ class MPProgressDialog : UIView {
         if(_progressCount != nil) {
             bringSubview(toFront: _progressCount!)
         }
-    }       
+        cancleBtn = UIButton(frame: CGRect(x: frame.midX, y: frame.midY + 20, width: UIScreen.main.bounds.width/6,
+                                           height: UIScreen.main.bounds.width/12))
+        cancleBtn.center.x = self.center.x
+        cancleBtn.setTitle("cancle", for: .normal)
+        cancleBtn.backgroundColor = .red
+        addSubview(cancleBtn)
+    }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        
     }
 }
