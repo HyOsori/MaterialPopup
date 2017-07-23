@@ -23,8 +23,12 @@ public enum MPDialogAnimationType {
     case pop
 }
 
+public typealias DialogButtonAction = () -> Void
 
 //MPDialog's View.
+/*
+ * 각각의 Dialog에 대하여 init을 따로 따로 해준다.
+ */
 @IBDesignable
 class MPDialog: UIView {
     @IBInspectable open var mpDialogType: MPDialogType? = .checkList    // determine what dialog type is. Default is checkList.
@@ -32,6 +36,8 @@ class MPDialog: UIView {
     @IBInspectable open var mpOverlayViewColor: UIColor? = UIColor(white: 1.0, alpha: 0.5)       // overlayview's color
     
     open var mpProgressView: MPProgressDialog?
+    
+    var MPDialogDelegate: MPDialogDelegate?
     
     fileprivate var overLayView: UIView!
     
@@ -44,42 +50,38 @@ class MPDialog: UIView {
         backgroundColor = .green
     }
     
-    init(dialogType : MPDialogType, frame: CGRect) {
-        print("frame.minX \(frame.minX)")
-        
+    // ProgressBar에 대한 Dialog.
+    init(MPProgressframe: CGRect, progressCompletionHandler: @escaping ((MPProgressDialog) -> Void)) {
         //실제 화면에서 보여주는 프레임!
-        print("frame in MPDialog \(frame)")
+        //print("frame in MPDialog \(MPProgressframe)")
         
-        overLayView = UIView(frame: CGRect(x: -frame.minX, y: -frame.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        overLayView = UIView(frame: CGRect(x: -MPProgressframe.minX, y: -MPProgressframe.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         overLayView.backgroundColor = mpOverlayViewColor!
-        super.init(frame: frame)
+        super.init(frame: MPProgressframe)
         
         self.backgroundColor = .green
         
+        mpProgressView = MPProgressDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        mpProgressView?.progressTitle = "0%"
+        //        mpProgressView?.progressBar.progress = 1.0
+        mpProgressView?.handler = progressCompletionHandler
+        
+        mpProgressView?.cancleBtn.addTarget(self, action: #selector(onClickProgressCancelButton(_:)), for: .touchUpInside)
+        
         self.addSubview(overLayView)
-        switch dialogType {
-        case.checkList:
-            backgroundColor = .green
-            print("checkList!")
-        case.alert:
-            backgroundColor = .red
-            print("alertView!")
-        case.progressBar:
-            backgroundColor = .gray
-//            addItem(handler: { (progress) in                
-//                self.removeFromSuperview()
-//            })
-            print("progressBar")
-        case.actionSheet:
-            backgroundColor = .gray
-            print("actionSheet!")
-        }
+        addSubview(mpProgressView!)
+        
+    }
+    
+    func onClickProgressCancelButton(_ sender: UIButton) {
+        print("in mpdialog")
+        //delegate로 콜백을 넘겨주는 부분인데 optional이므로, delegate가 nil값일 경우에는 이 메소드를 타지 않는다.
+        MPDialogDelegate?.progressCancelButtonCallback?()
     }
     
     func addItem(handler: @escaping ((MPProgressDialog) -> Void)) {
         mpProgressView = MPProgressDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         mpProgressView?.progressTitle = "0%"
-//        mpProgressView?.progressBar.progress = 1.0
         mpProgressView?.handler = handler
         addSubview(mpProgressView!)
     }

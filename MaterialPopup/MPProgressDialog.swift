@@ -16,6 +16,7 @@ public enum MPProgressDialogType {
     case semicircle
 }
 
+
 class MPProgressDialog : UIView {
     var progressBar: UIProgressView!
     
@@ -43,6 +44,8 @@ class MPProgressDialog : UIView {
     
     open var cancleBtn: UIButton!
     
+    open var buttonAction: DialogButtonAction?
+    
     open var progressTitle: String? = nil {
         didSet {
             progressLabel.text = progressTitle!
@@ -65,7 +68,7 @@ class MPProgressDialog : UIView {
         }
     }
     
-    //Handler is excuted when progress is 100% or click close button.
+    //Handler is excuted when progress is 100%.
     open var handler: ((MPProgressDialog) -> Void)? = nil
     
     required init?(coder aDecoder: NSCoder) {
@@ -82,11 +85,11 @@ class MPProgressDialog : UIView {
         if(_progressCount != nil) {
             bringSubview(toFront: _progressCount!)
         }
-        cancleBtn = UIButton(frame: CGRect(x: frame.midX, y: frame.midY + 20, width: UIScreen.main.bounds.width/6,
-                                           height: UIScreen.main.bounds.width/12))
+        cancleBtn = UIButton(frame: CGRect(x: frame.midX, y: frame.midY + 20, width: UIScreen.main.bounds.width/6, height: UIScreen.main.bounds.width/12))
         cancleBtn.center.x = self.center.x
         cancleBtn.setTitle("cancle", for: .normal)
         cancleBtn.backgroundColor = .red
+    
         addSubview(cancleBtn)
     }
     

@@ -8,9 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
-
+class ViewController: UIViewController, MPDialogDelegate {    
     var dialog : MPDialog!
     
     var dialogTestBtn: UIButton!
@@ -19,7 +17,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dialog = MPDialog(dialogType: .progressBar, frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200))
+        dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), progressCompletionHandler: { (progressDialog) in
+            print("aaaaaaa")
+        })
         
         //임의로 progressCount의 위치 등 변경할 수 있음.
 //        dialog.mpProgressView?._progressCount?.frame = CGRect(x: 0, y: 150, width: 30, height: 30)
@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         dialogTestBtn.setTitle("TestDialogPrgressBar", for: .normal)
         dialogTestBtn.backgroundColor = .black
         dialogTestBtn.addTarget(self, action: #selector(onClickDialogTestBtn(_:)), for: .touchUpInside)
+        
         
         self.view.addSubview(dialogTestBtn)
         self.view.backgroundColor = .yellow
@@ -38,6 +39,7 @@ class ViewController: UIViewController {
         self.view.addSubview(dialog)
         self.dialog.mpProgressView?._progressCount?.text = "0%"
         self.dialog.mpProgressView?.counter = 0
+        self.dialog.MPDialogDelegate = self
         for _ in 0..<100 {
             DispatchQueue.global().async {
                 sleep(1)
@@ -47,10 +49,11 @@ class ViewController: UIViewController {
                 }
             }
         }
-        self.dialog.addItem { (dialog) in
-            print("aaaaaaa")
-        }
-        self.dialog.mpProgressView?.cancleBtn.addTarget(self, action: #selector(onClickCancleBtn(_:)), for: .touchUpInside)
+    }
+    
+    //ProgressBar에서 취소 버튼을 눌렀을 경우에 대한 콜백을 받는 함수.
+    func progressCancelButtonCallback() {
+        print("this Work?")
     }
     
     func onClickCancleBtn(_ sender: UIButton) {
