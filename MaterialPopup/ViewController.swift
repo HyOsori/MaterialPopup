@@ -17,7 +17,7 @@ class ViewController: UIViewController, MPDialogDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), progressCompletionHandler: { (progressDialog) in
+        dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .linear, progressCompletionHandler: { (progressDialog) in
             print("aaaaaaa")
         })
         
@@ -39,24 +39,19 @@ class ViewController: UIViewController, MPDialogDelegate {
         self.view.addSubview(dialog)
         self.dialog.mpProgressView?._progressCount?.text = "0%"
         self.dialog.mpProgressView?.counter = 0
+        //Custom cacnelBtn.
+//        self.dialog.mpProgressView?.cancelBtn.setTitle("Cancel", for: .normal)
         self.dialog.MPDialogDelegate = self
-        for _ in 0..<100 {
-            DispatchQueue.global().async {
-                sleep(1)
-                DispatchQueue.main.async {
-                    self.dialog.mpProgressView?.counter += 1
-                    return
-                }
-            }
-        }
+        self.dialog.mpProgressView?.startProgress()
     }
     
     //ProgressBar에서 취소 버튼을 눌렀을 경우에 대한 콜백을 받는 함수.
     func progressCancelButtonCallback() {
         print("this Work?")
+        self.dialog.removeFromSuperview()
     }
     
-    func onClickCancleBtn(_ sender: UIButton) {
+    func onClickCancelBtn(_ sender: UIButton) {
         self.dialog.removeFromSuperview()
     }
 

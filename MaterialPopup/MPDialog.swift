@@ -47,11 +47,11 @@ class MPDialog: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .green
+//        backgroundColor = .green
     }
     
     // ProgressBar에 대한 Dialog.
-    init(MPProgressframe: CGRect, progressCompletionHandler: @escaping ((MPProgressDialog) -> Void)) {
+    init(MPProgressframe: CGRect, dialogType: MPProgressDialogType?, progressCompletionHandler: @escaping ((MPProgressDialog) -> Void)) {
         //실제 화면에서 보여주는 프레임!
         //print("frame in MPDialog \(MPProgressframe)")
         
@@ -59,14 +59,14 @@ class MPDialog: UIView {
         overLayView.backgroundColor = mpOverlayViewColor!
         super.init(frame: MPProgressframe)
         
-        self.backgroundColor = .green
+        mpProgressView = MPProgressDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), type: dialogType)
+        mpProgressView?.progressType = dialogType
         
-        mpProgressView = MPProgressDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         mpProgressView?.progressTitle = "0%"
         //        mpProgressView?.progressBar.progress = 1.0
         mpProgressView?.handler = progressCompletionHandler
         
-        mpProgressView?.cancleBtn.addTarget(self, action: #selector(onClickProgressCancelButton(_:)), for: .touchUpInside)
+        mpProgressView?.cancelBtn.addTarget(self, action: #selector(onClickProgressCancelButton(_:)), for: .touchUpInside)
         
         self.addSubview(overLayView)
         addSubview(mpProgressView!)
