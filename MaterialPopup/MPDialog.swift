@@ -10,7 +10,14 @@ import Foundation
 import UIKit
 
 
-//Dialog Type
+/**
+ MPDialogType's enumeration type.
+ 
+ - checkList   : View which has multi checkbox list.
+ - alert       : View which is custom alert View.
+ - progressBar : View which is custom progressBar.
+ - actionSheet : View which is custom default iphone's actionSheet.
+ */
 public enum MPDialogType {
     case checkList
     case alert
@@ -26,8 +33,10 @@ public enum MPDialogAnimationType {
 public typealias DialogButtonAction = () -> Void
 
 //MPDialog's View.
-/*
- * 각각의 Dialog에 대하여 init을 따로 따로 해준다.
+/**
+ MPDialog's main View.
+ 
+ You can init with type you want. 
  */
 @IBDesignable
 class MPDialog: UIView {
@@ -47,10 +56,13 @@ class MPDialog: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        backgroundColor = .green
     }
     
-    // ProgressBar에 대한 Dialog.
+    /**
+     Progress init
+     
+     - Parameter dialogType: MPProgressDialogType
+    */
     init(MPProgressframe: CGRect, dialogType: MPProgressDialogType?, progressCompletionHandler: @escaping ((MPProgressDialog) -> Void)) {
         //실제 화면에서 보여주는 프레임!
         //print("frame in MPDialog \(MPProgressframe)")

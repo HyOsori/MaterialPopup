@@ -17,7 +17,7 @@ class ViewController: UIViewController, MPDialogDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .linear, progressCompletionHandler: { (progressDialog) in
+        dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .circular, progressCompletionHandler: { (progressDialog) in
             print("aaaaaaa")
         })
         
@@ -42,7 +42,19 @@ class ViewController: UIViewController, MPDialogDelegate {
         //Custom cacnelBtn.
 //        self.dialog.mpProgressView?.cancelBtn.setTitle("Cancel", for: .normal)
         self.dialog.MPDialogDelegate = self
-        self.dialog.mpProgressView?.startProgress()
+        
+        //default로 돌려버리는 메소드.
+//        self.dialog.mpProgressView?.startProgress()
+        
+        DispatchQueue.global().async {
+            for i in 0...100 {
+                usleep(10000)
+                DispatchQueue.main.async {
+                    let j = Float(i)*0.01
+                    self.dialog.mpProgressView?.updateProgress(fractionalProgress: j)
+                }
+            }
+        }
     }
     
     //ProgressBar에서 취소 버튼을 눌렀을 경우에 대한 콜백을 받는 함수.

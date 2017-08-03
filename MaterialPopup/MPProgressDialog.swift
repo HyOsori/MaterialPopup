@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 
-//Dialog Type
+/**
+ MPProgressDialog's enumeration type.
+ 
+ - linear     : ProgressBar which is Linear
+ - circular   : ProgressBar which is Circular
+ - semicircle : ProgressBar which is SemiCircular
+ */
 public enum MPProgressDialogType {
     case linear
     case circular
@@ -97,13 +103,13 @@ class MPProgressDialog : UIView {
     
     open var animation : CABasicAnimation!
     
-    //Default Start Value
+    ///Default Start Value
     open var startValue = 0
     
-    //Default End Value
+    ///Default End Value
     open var endValue = 1
     
-    //Handler is excuted when progress is 100%.
+    ///Handler is excuted when progress is 100%.
     open var handler: ((MPProgressDialog) -> Void)? = nil
     
     required init?(coder aDecoder: NSCoder) {
@@ -155,9 +161,6 @@ class MPProgressDialog : UIView {
                 bringSubview(toFront: _progressCount!)
             }
             
-            
-            
-            print("circular!")
         case .semicircle:
             print("semicircle")
         }
@@ -198,27 +201,58 @@ class MPProgressDialog : UIView {
         super.draw(rect)
     }
     
+    /**
+     Update value that you want update progress. 
+     
+     if value is bigger than 1, then value will set 1.
+     
+     - parameters:
+        - fractionalProgress : progress value.
+    */
+    open func updateProgress(fractionalProgress: Float) {
+        var progressValue = fractionalProgress
+        if(progressValue > 1) {
+            progressValue = 1
+        }
+        switch progressType! {
+        case .linear:
+            self.counter = Int(fractionalProgress*100)
+        case .circular:
+            let anime = CABasicAnimation(keyPath: "strokeEnd")
+            anime.fromValue = fractionalProgress - 0.01
+            anime.toValue = fractionalProgress
+            anime.duration = 0.8
+            anime.isRemovedOnCompletion = false
+            anime.fillMode = kCAFillModeForwards
+            self.progressCircle.add(anime, forKey: "ani")
+            self.counter = Int(fractionalProgress*100)
+            if(self.counter == 100) {
+                self.progressCircle.strokeEnd = 1.0
+                self.progressCircle.removeAllAnimations()
+            }
+        case .semicircle:
+            print("semicircle!")
+        }
+    }
+    
+    //Example of show progress.
     open func startProgress() {
         switch progressType! {
         case .linear:
             DispatchQueue.global().async {
                 for _ in 0..<100 {
-                    usleep(10000)
+                    usleep(100000)
                     DispatchQueue.main.async {
                         self.counter += 1
                         return
                     }
                 }
             }
-
-            print("linearrrrr")
         case .circular:
             DispatchQueue.global().async {
             for i in 0..<100 {
                 usleep(100000)
                 let anime = CABasicAnimation(keyPath: "strokeEnd")
-                print("\(i)/100 \(Float(i)/Float(100))")
-                print("\((i+1))/100 \(Float((i+1))/Float(100))")
                 anime.fromValue = Float(i)/Float(100)
                 anime.toValue = Float((i+1))/Float(100)
                 anime.duration = 0.8
@@ -227,16 +261,13 @@ class MPProgressDialog : UIView {
                 DispatchQueue.main.async {
                         self.progressCircle.add(anime, forKey: "ani")
                         self.counter += 1
-                        print("self.counter \(self.counter)")
                         if(self.counter == 100) {
-                            print("overrrr")
                             self.progressCircle.strokeEnd = 1.0
                             self.progressCircle.removeAllAnimations()
                         }
                     }
                 }
             }
-            print("circulaaarrr")
         case .semicircle:
             print("semiCircular")
         }
