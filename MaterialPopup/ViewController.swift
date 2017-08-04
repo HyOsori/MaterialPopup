@@ -29,7 +29,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         linearProgressBtn.addTarget(self, action: #selector(onClickLinearProgress(_:)), for: .touchUpInside)
         
         circleProgressBtn = UIButton(frame: CGRect(x: 155, y: self.view.frame.height/2 - 50, width: 100, height: 100))
-        circleProgressBtn.setTitle("LinearPrgress", for: .normal)
+        circleProgressBtn.setTitle("CircularPrgress", for: .normal)
         circleProgressBtn.backgroundColor = .white
         circleProgressBtn.setTitleColor(.black, for: .normal)
         circleProgressBtn.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -37,7 +37,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         
         
         semicircleProgressBtn = UIButton(frame: CGRect(x: 280, y: self.view.frame.height/2 - 50, width: 100, height: 100))
-        semicircleProgressBtn.setTitle("LinearPrgress", for: .normal)
+        semicircleProgressBtn.setTitle("SemiCirclePrgress", for: .normal)
         semicircleProgressBtn.backgroundColor = .white
         semicircleProgressBtn.setTitleColor(.black, for: .normal)
         semicircleProgressBtn.titleLabel?.adjustsFontSizeToFitWidth = true
