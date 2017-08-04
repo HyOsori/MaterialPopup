@@ -42,7 +42,7 @@ public typealias DialogButtonAction = () -> Void
 class MPDialog: UIView {
     @IBInspectable open var mpDialogType: MPDialogType? = .checkList    // determine what dialog type is. Default is checkList.
     
-    @IBInspectable open var mpOverlayViewColor: UIColor? = UIColor(white: 1.0, alpha: 0.5)       // overlayview's color
+    @IBInspectable open var mpOverlayViewColor: UIColor? = UIColor(white: 1.0, alpha: 0.3)       // overlayview's color
     
     open var mpProgressView: MPProgressDialog?
     
