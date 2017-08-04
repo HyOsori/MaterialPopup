@@ -9,11 +9,10 @@
 import Foundation
 import UIKit
 
-
-/*
- * MPDialog에 관한 delegate.
- * optional로 선언을 해주어서, 쓰고 싶지 않거나, 굳이 콜백을 받고 싶지 않다면, MPDialogDelegate를 상속 받지
- * 않으면 됨.
+/**
+ MPDialog's delegate that callback for on click cancel button.
+ 
+ - note : Declare it as optional, If you do not want to use it, or if you do not want to receive callbacks, do not inherit MPDialogDelegate.
  */
 @objc
 public protocol MPDialogDelegate {

@@ -16,13 +16,13 @@ import UIKit
  - circular   : ProgressBar which is Circular
  - semicircle : ProgressBar which is SemiCircular
  */
-public enum MPProgressDialogType {
+public enum MPProgressDialogType : Int {
     case linear
     case circular
     case semicircle
 }
 
-
+@IBDesignable
 class MPProgressDialog : UIView {
     var progressBar: UIProgressView!
     
