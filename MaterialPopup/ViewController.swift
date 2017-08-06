@@ -13,6 +13,8 @@ class ViewController: UIViewController, MPDialogDelegate {
     var linearProgressBtn: UIButton!
     var circleProgressBtn: UIButton!
     var semicircleProgressBtn: UIButton!
+    
+    var checkListBtn: UIButton!
     var timer : Timer!
     var p: Float = 10.0
     
@@ -43,11 +45,33 @@ class ViewController: UIViewController, MPDialogDelegate {
         semicircleProgressBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         semicircleProgressBtn.addTarget(self, action: #selector(onClickSemicircleProgress(_:)), for: .touchUpInside)
         
+        checkListBtn = UIButton(frame: CGRect(x: self.view.frame.width - 50, y: self.view.frame.height/2 + 50, width: 100, height: 100))
+        checkListBtn.setTitle("checkListBtn", for: .normal)
+        checkListBtn.backgroundColor = .white
+        checkListBtn.setTitleColor(.black, for: .normal)
+        checkListBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        checkListBtn.addTarget(self, action: #selector(onClickCheckList(_:)), for: .touchUpInside)
+        
         self.view.addSubview(linearProgressBtn)
         self.view.addSubview(circleProgressBtn)
         self.view.addSubview(semicircleProgressBtn)
+        self.view.addSubview(checkListBtn)
         self.view.backgroundColor = .black
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func onClickCheckList(_ sender: UIButton) {
+        
+        var checkList: [checkListData]! = []
+        checkList.append(checkListData(textlabel: "aaaaa", mark: false))
+        checkList.append(checkListData(textlabel: "bbbbb", mark: false))
+        checkList.append(checkListData(textlabel: "ccccc", mark: true))
+        checkList.append(checkListData(textlabel: "ddddd", mark: false))
+        checkList.append(checkListData(textlabel: "eeeee", mark: false))
+
+        dialog = MPDialog(MPCheckListframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), checkListData: checkList)
+        
+        self.view.addSubview(dialog)
     }
     
     func onClickLinearProgress(_ sender: UIButton) {

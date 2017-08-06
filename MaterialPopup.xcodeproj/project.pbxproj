@@ -17,6 +17,7 @@
 		7631225F1F03BFBE005C89D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7631225D1F03BFBE005C89D2 /* LaunchScreen.storyboard */; };
 		7631226A1F03BFBE005C89D2 /* MaterialPopupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763122691F03BFBE005C89D2 /* MaterialPopupTests.swift */; };
 		763122751F03BFBE005C89D2 /* MaterialPopupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763122741F03BFBE005C89D2 /* MaterialPopupUITests.swift */; };
+		78F888BE1F372F6200027EE5 /* MPCheckListDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F888BD1F372F6200027EE5 /* MPCheckListDialog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		763122701F03BFBE005C89D2 /* MaterialPopupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialPopupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		763122741F03BFBE005C89D2 /* MaterialPopupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialPopupUITests.swift; sourceTree = "<group>"; };
 		763122761F03BFBE005C89D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78F888BD1F372F6200027EE5 /* MPCheckListDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCheckListDialog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				760A02DE1F0CC514006B048F /* MPDialog.swift */,
 				760A02E01F0CDAC1006B048F /* MPProgressDialog.swift */,
 				7621ED181F246FA5006A3A04 /* MPDialogProtocol.swift */,
+				78F888BD1F372F6200027EE5 /* MPCheckListDialog.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				760A02DF1F0CC514006B048F /* MPDialog.swift in Sources */,
+				78F888BE1F372F6200027EE5 /* MPCheckListDialog.swift in Sources */,
 				7621ED191F246FA5006A3A04 /* MPDialogProtocol.swift in Sources */,
 				763122571F03BFBE005C89D2 /* ViewController.swift in Sources */,
 				763122551F03BFBE005C89D2 /* AppDelegate.swift in Sources */,

@@ -32,6 +32,11 @@ public enum MPDialogAnimationType {
 
 public typealias DialogButtonAction = () -> Void
 
+struct checkListData {
+    var textlabel : String!
+    var mark : Bool!
+}
+
 //MPDialog's View.
 /**
  MPDialog's main View.
@@ -45,6 +50,8 @@ class MPDialog: UIView {
     @IBInspectable open var mpOverlayViewColor: UIColor? = UIColor(white: 1.0, alpha: 0.3)       // overlayview's color
     
     open var mpProgressView: MPProgressDialog?
+    
+    open var mpCheckListView: MPCheckListDialog?
     
     var MPDialogDelegate: MPDialogDelegate?
     
@@ -96,6 +103,20 @@ class MPDialog: UIView {
         mpProgressView?.progressTitle = "0%"
         mpProgressView?.handler = handler
         addSubview(mpProgressView!)
+    }
+    
+    /**
+     CheckList init
+     
+    */
+    init(MPCheckListframe: CGRect, checkListData: [checkListData]) {
+        overLayView = UIView(frame: CGRect(x: -MPCheckListframe.minX, y: -MPCheckListframe.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        overLayView.backgroundColor = mpOverlayViewColor!
+
+        super.init(frame: MPCheckListframe)
+        
+        mpCheckListView = MPCheckListDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), checkListData: checkListData)        
+        addSubview(mpCheckListView!)
     }
     
 }
