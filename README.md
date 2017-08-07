@@ -10,7 +10,7 @@ MaterialPopup is Dialog that have 4 type(checkbox list, alert, progressbar, acti
 <th>Checklist</th><th>Alert</th><th>Progressbar</th><th>Actionsheet</th>
 </tr>
 <tr>
-<td></td>
+<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/checkList.gif" width='187' alt="checkList gif"></td>
 <td></td>
 <td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/progress.gif" width='187' alt="Progressbar gif"></td>
 <td></td>
