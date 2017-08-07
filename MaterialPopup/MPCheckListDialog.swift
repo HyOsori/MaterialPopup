@@ -14,8 +14,7 @@ class checkListCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        checklist = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-        
+        checklist = UILabel(frame: CGRect(x: 15, y: -5, width: self.frame.width - 50, height: self.frame.height + 10))
         addSubview(checklist)
     }
     
@@ -33,6 +32,7 @@ class MPCheckListDialog: UIView, UITableViewDelegate,UITableViewDataSource {
         self.checkListData = checkListData
         checkListTableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         checkListTableView.register(checkListCell.self, forCellReuseIdentifier: "checkListCell")
+        checkListTableView.backgroundColor = .red
         checkListTableView.delegate = self
         checkListTableView.dataSource = self
         checkListTableView.tableFooterView = UIView(frame: .zero)

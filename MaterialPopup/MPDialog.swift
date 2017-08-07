@@ -115,8 +115,16 @@ class MPDialog: UIView {
 
         super.init(frame: MPCheckListframe)
         
-        mpCheckListView = MPCheckListDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), checkListData: checkListData)        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onClickOverlayView(_:)))
+        overLayView.addGestureRecognizer(tapGesture)
+        
+        mpCheckListView = MPCheckListDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), checkListData: checkListData)
+        self.addSubview(overLayView)
         addSubview(mpCheckListView!)
+    }
+    
+    func onClickOverlayView(_ sender: UITapGestureRecognizer) {
+        self.removeFromSuperview()
     }
     
 }

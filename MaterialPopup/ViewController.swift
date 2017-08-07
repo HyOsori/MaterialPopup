@@ -45,7 +45,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         semicircleProgressBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         semicircleProgressBtn.addTarget(self, action: #selector(onClickSemicircleProgress(_:)), for: .touchUpInside)
         
-        checkListBtn = UIButton(frame: CGRect(x: self.view.frame.width - 50, y: self.view.frame.height/2 + 50, width: 100, height: 100))
+        checkListBtn = UIButton(frame: CGRect(x: 155, y: self.view.frame.height/2 + 70, width: 100, height: 100))
         checkListBtn.setTitle("checkListBtn", for: .normal)
         checkListBtn.backgroundColor = .white
         checkListBtn.setTitleColor(.black, for: .normal)
@@ -57,6 +57,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         self.view.addSubview(semicircleProgressBtn)
         self.view.addSubview(checkListBtn)
         self.view.backgroundColor = .black
+
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -69,9 +70,12 @@ class ViewController: UIViewController, MPDialogDelegate {
         checkList.append(checkListData(textlabel: "ddddd", mark: false))
         checkList.append(checkListData(textlabel: "eeeee", mark: false))
 
-        dialog = MPDialog(MPCheckListframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), checkListData: checkList)
+        dialog = MPDialog(MPCheckListframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), checkListData: checkList)
         
         self.view.addSubview(dialog)
+
+        self.dismiss(animated: true, completion: nil)
+
     }
     
     func onClickLinearProgress(_ sender: UIButton) {
