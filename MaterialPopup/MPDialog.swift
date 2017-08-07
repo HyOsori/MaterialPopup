@@ -77,9 +77,9 @@ class MPDialog: UIView {
         overLayView = UIView(frame: CGRect(x: -MPProgressframe.minX, y: -MPProgressframe.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         overLayView.backgroundColor = mpOverlayViewColor!
         super.init(frame: MPProgressframe)
-        
         mpProgressView = MPProgressDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), type: dialogType)
         mpProgressView?.progressType = dialogType
+        mpDialogType = .progressBar
         
         mpProgressView?.progressTitle = "0%"
         //        mpProgressView?.progressBar.progress = 1.0
@@ -114,17 +114,51 @@ class MPDialog: UIView {
         overLayView.backgroundColor = mpOverlayViewColor!
 
         super.init(frame: MPCheckListframe)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onClickOverlayView(_:)))
-        overLayView.addGestureRecognizer(tapGesture)
-        
+        mpDialogType = .checkList
         mpCheckListView = MPCheckListDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), checkListData: checkListData)
         self.addSubview(overLayView)
         addSubview(mpCheckListView!)
     }
     
-    func onClickOverlayView(_ sender: UITapGestureRecognizer) {
-        self.removeFromSuperview()
-    }
-    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        switch mpDialogType! {
+        case.checkList:
+            if(!self.isUserInteractionEnabled || self.isHidden) {
+                return nil
+            }
+            if(self.point(inside: point, with: event)) {
+                for subview in self.subviews.reversed() {
+                    let convetedPoint = subview.convert(point, from: self)
+                    let hitTestView = subview.hitTest(convetedPoint, with: event)
+                    if((hitTestView) != nil) {
+                        return hitTestView
+                    }
+                }
+                return self
+            }
+            self.removeFromSuperview()
+            return nil
+        case.progressBar:
+            if(!self.isUserInteractionEnabled || self.isHidden) {
+                return nil
+            }
+            if(self.point(inside: point, with: event)) {
+                for subview in self.subviews.reversed() {
+                    let convetedPoint = subview.convert(point, from: self)
+                    let hitTestView = subview.hitTest(convetedPoint, with: event)
+                    if((hitTestView) != nil) {
+                        return hitTestView
+                    }
+                }
+                return self
+            }
+            self.removeFromSuperview()
+            return nil
+        case.alert:
+            print("alert")
+        case.actionSheet:
+            print("actionSheeet")
+        }
+        return nil
+    }    
 }
