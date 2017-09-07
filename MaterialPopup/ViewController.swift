@@ -15,6 +15,7 @@ class ViewController: UIViewController, MPDialogDelegate {
     var semicircleProgressBtn: UIButton!
     
     var checkListBtn: UIButton!
+    var alertListBtn: UIButton!
     var timer : Timer!
     var p: Float = 10.0
     
@@ -45,20 +46,34 @@ class ViewController: UIViewController, MPDialogDelegate {
         semicircleProgressBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         semicircleProgressBtn.addTarget(self, action: #selector(onClickSemicircleProgress(_:)), for: .touchUpInside)
         
-        checkListBtn = UIButton(frame: CGRect(x: 155, y: self.view.frame.height/2 + 70, width: 100, height: 100))
+        checkListBtn = UIButton(frame: CGRect(x: 92.5, y: self.view.frame.height/2 + 70, width: 100, height: 100))
         checkListBtn.setTitle("checkListBtn", for: .normal)
         checkListBtn.backgroundColor = .white
         checkListBtn.setTitleColor(.black, for: .normal)
         checkListBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         checkListBtn.addTarget(self, action: #selector(onClickCheckList(_:)), for: .touchUpInside)
         
+        alertListBtn = UIButton(frame: CGRect(x: 200, y: self.view.frame.height/2 + 70, width: 100, height: 100))
+        alertListBtn.setTitle("alertListBtn", for: .normal)
+        alertListBtn.backgroundColor = .white
+        alertListBtn.setTitleColor(.black, for: .normal)
+        alertListBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        alertListBtn.addTarget(self, action: #selector(onClickAlertList(_:)), for: .touchUpInside)
+        
         self.view.addSubview(linearProgressBtn)
         self.view.addSubview(circleProgressBtn)
         self.view.addSubview(semicircleProgressBtn)
         self.view.addSubview(checkListBtn)
+        self.view.addSubview(alertListBtn)
         self.view.backgroundColor = .black
 
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func onClickAlertList(_ sender: UIButton) {
+        dialog = MPDialog(MPAlertframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), title: "이것만 하고 집가자!!!", image: nil, message: "으아아아아암휴이ㅠㅎ마ㅣ듀힞ㅁ")
+        
+        self.view.addSubview(dialog)
     }
     
     func onClickCheckList(_ sender: UIButton) {
@@ -81,7 +96,7 @@ class ViewController: UIViewController, MPDialogDelegate {
     func onClickLinearProgress(_ sender: UIButton) {
         
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .linear, progressCompletionHandler: { (progressDialog) in
-            print("aaaaaaa")
+            print("progress completed")
         })
         self.view.addSubview(dialog)
         self.dialog.mpProgressView?._progressCount?.text = "0%"
@@ -107,7 +122,7 @@ class ViewController: UIViewController, MPDialogDelegate {
     func onClickCircleProgress(_ sender: UIButton) {
         
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .circular, progressCompletionHandler: { (progressDialog) in
-            print("aaaaaaa")
+            print("progress completed")
         })
         self.view.addSubview(dialog)
         self.dialog.mpProgressView?._progressCount?.text = "0%"
@@ -116,7 +131,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         //        self.dialog.mpProgressView?.cancelBtn.setTitle("Cancel", for: .normal)
         self.dialog.MPDialogDelegate = self
         
-        //default로 돌려버리는 메소드.
+        //method that
         //        self.dialog.mpProgressView?.startProgress()
         
         DispatchQueue.global().async {
@@ -133,7 +148,7 @@ class ViewController: UIViewController, MPDialogDelegate {
     func onClickSemicircleProgress(_ sender: UIButton) {
         
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .semicircle, progressCompletionHandler: { (progressDialog) in
-            print("aaaaaaa")
+            print("progress completed")
         })
         self.view.addSubview(dialog)
         self.dialog.mpProgressView?._progressCount?.text = "0%"
@@ -159,7 +174,7 @@ class ViewController: UIViewController, MPDialogDelegate {
     
     //ProgressBar에서 취소 버튼을 눌렀을 경우에 대한 콜백을 받는 함수.
     func progressCancelButtonCallback() {
-        print("this Work?")
+        print("on click Cancel button")
         self.dialog.removeFromSuperview()
     }
     

@@ -57,15 +57,6 @@ class MPProgressDialog : UIView {
     }
     
     // cancle button
-//    open var cancleBtn: UIButton{
-//        get {
-//            let tempBtn = UIButton(frame: CGRect(x: progressBar.frame.minX, y: 0, width: UIScreen.main.bounds.width/8,
-//                                                 height: UIScreen.main.bounds.width/24))
-//            tempBtn.backgroundColor = .red
-//            return tempBtn
-//        }
-//    }
-    
     open var cancelBtn: UIButton!
     
     //progressType. default linear.

@@ -16,13 +16,11 @@ import UIKit
  - checkList   : View which has multi checkbox list.
  - alert       : View which is custom alert View.
  - progressBar : View which is custom progressBar.
- - actionSheet : View which is custom default iphone's actionSheet.
  */
 public enum MPDialogType {
     case checkList
     case alert
     case progressBar
-    case actionSheet
 }
 
 //Dialog Animation
@@ -53,6 +51,8 @@ class MPDialog: UIView {
     
     open var mpCheckListView: MPCheckListDialog?
     
+    open var mpAlertView: MPAlertDialog?
+    
     var MPDialogDelegate: MPDialogDelegate?
     
     fileprivate var overLayView: UIView!
@@ -72,7 +72,6 @@ class MPDialog: UIView {
     */
     init(MPProgressframe: CGRect, dialogType: MPProgressDialogType?, progressCompletionHandler: @escaping ((MPProgressDialog) -> Void)) {
         //실제 화면에서 보여주는 프레임!
-        //print("frame in MPDialog \(MPProgressframe)")
         
         overLayView = UIView(frame: CGRect(x: -MPProgressframe.minX, y: -MPProgressframe.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         overLayView.backgroundColor = mpOverlayViewColor!
@@ -84,7 +83,6 @@ class MPDialog: UIView {
         mpProgressView?.progressTitle = "0%"
         //        mpProgressView?.progressBar.progress = 1.0
         mpProgressView?.handler = progressCompletionHandler
-        
         mpProgressView?.cancelBtn.addTarget(self, action: #selector(onClickProgressCancelButton(_:)), for: .touchUpInside)
         
         self.addSubview(overLayView)
@@ -93,7 +91,6 @@ class MPDialog: UIView {
     }
     
     func onClickProgressCancelButton(_ sender: UIButton) {
-        print("in mpdialog")
         //delegate로 콜백을 넘겨주는 부분인데 optional이므로, delegate가 nil값일 경우에는 이 메소드를 타지 않는다.
         MPDialogDelegate?.progressCancelButtonCallback?()
     }
@@ -118,6 +115,17 @@ class MPDialog: UIView {
         mpCheckListView = MPCheckListDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), checkListData: checkListData)
         self.addSubview(overLayView)
         addSubview(mpCheckListView!)
+    }
+    
+    init(MPAlertframe: CGRect, title: String?, image: UIImage?, message: String?) {
+        overLayView = UIView(frame: CGRect(x: -MPAlertframe.minX, y: -MPAlertframe.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        overLayView.backgroundColor = mpOverlayViewColor!
+        
+        super.init(frame: MPAlertframe)
+        mpDialogType = .alert
+        mpAlertView = MPAlertDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), title: title, image: image, message: message)
+        self.addSubview(overLayView)
+        addSubview(mpAlertView!)
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -156,8 +164,6 @@ class MPDialog: UIView {
             return nil
         case.alert:
             print("alert")
-        case.actionSheet:
-            print("actionSheeet")
         }
         return nil
     }    
