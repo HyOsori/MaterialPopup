@@ -57,7 +57,7 @@ When click cancle button, cancle button callback method is executed.
     }
 ```
 
-##### <a name="linear"><a/> linear progress dialog
+#### <a name="linear"><a/> linear progress dialog
 - On ViewController, create create a button that pop up linear progress view when you click on it.
 
  ```{swift}
@@ -100,7 +100,7 @@ self.view.addSubview(linearProgressBtn)
     }
  ```
  
-##### <a name="circular"><a/> circular progress dialog
+#### <a name="circular"><a/> circular progress dialog
 - On ViewController, create create a button that pop up circular progress view when you click on it.
 
  ```{swift}
@@ -141,7 +141,7 @@ self.view.addSubview(circleProgressBtn)
     }
  ```
 
-##### <a name="semicircular"><a/> semicircular progress dialog
+#### <a name="semicircular"><a/> semicircular progress dialog
 - On ViewController, create create a button that pop up semicircular progress view when you click on it.
 
  ```{swift}
@@ -233,7 +233,7 @@ When click cancle button, cancle button method is executed.
 
 ```
 
-##### <a name="list"><a/> Alert list Dialog
+#### <a name="list"><a/> Alert list Dialog
 - On ViewController, create a button that pop up check list view when you click on it.
 
  ```{swift}
@@ -259,7 +259,7 @@ self.view.addSubview(alertListBtn)
  ```
 
 
-##### <a name="withoutimage"><a/> Alert list without image Dialog
+#### <a name="withoutimage"><a/> Alert list without image Dialog
 - On ViewController, create a button that pop up check list view when you click on it.
 
  ```{swift}
