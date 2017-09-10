@@ -1,22 +1,27 @@
 # Table of Contents.
-[MaterialPopup](#materialpopup)
+[1. MaterialPopup](#materialpopup)
 
-[Preview]
+[2. Preview](#preview)
 
-[Useage]
+[3. Useage](#useage)
 
-- [Progress Dialogue]
- - [linear progress dialog]
- - [circular progress dialog]
- - [semicircular progress dialog]
-- 
+- [Progress Dialog](#progress)
+ - [linear progress dialog](#linear)
+ - [circular progress dialog](#circular)
+ - [semicircular progress dialog](#semicircular)
+- [Checklist Dialog](#checklist)
+- [Alert Dialog](#alert)
+ - [Alert list dialog](#list)
+ - [Alert list without image dialog](#withoutimage)
+
+[4. License](#license)
 
 
 # <a name="materialpopup"> MaterialPopup </a>
 
 MaterialPopup is Dialog that have 4 type(checkbox list, alert, progressbar, actionsheet) that customized
 
-## Preview
+## <a name="preview"> Preview </a>
 
 <table>
 <tr>
@@ -30,8 +35,8 @@ MaterialPopup is Dialog that have 4 type(checkbox list, alert, progressbar, acti
 </tr>
 </table>
 
-## Useage
-### Progress Dialog
+## <a name="useasge"> Useage </a>
+### <a name="progress"> Progress Dialog </a>
 This library provide 3 types of progress dialog.<BR>
 
 - linear type
@@ -52,7 +57,7 @@ When click cancle button, cancle button callback method is executed.
     }
 ```
 
-##### linear progress dialog
+##### <a name="linear"><a/> linear progress dialog
 - On ViewController, create create a button that pop up linear progress view when you click on it.
 
  ```{swift}
@@ -95,7 +100,7 @@ self.view.addSubview(linearProgressBtn)
     }
  ```
  
-##### circular progress dialog
+##### <a name="circular"><a/> circular progress dialog
 - On ViewController, create create a button that pop up circular progress view when you click on it.
 
  ```{swift}
@@ -136,7 +141,7 @@ self.view.addSubview(circleProgressBtn)
     }
  ```
 
-##### semicircular progress dialog
+##### <a name="semicircular"><a/> semicircular progress dialog
 - On ViewController, create create a button that pop up semicircular progress view when you click on it.
 
  ```{swift}
@@ -177,7 +182,7 @@ self.view.addSubview(semicircleProgressBtn)
     }            
  ```
 
-### Checklist Dialog
+### <a name="checklist"> Checklist Dialog </a>
 This library provide checklist dialog. <BR>
 
 - On ViewController, create a button that pop up check list view when you click on it.
@@ -213,7 +218,7 @@ self.view.addSubview(checkListBtn)
    }
  ```
 
-### Alert Dialog
+### <a name="alert"> Alert Dialog </a>
 This library provide 2 types of Alert Dialog.
 
 - Alert with image
@@ -228,7 +233,7 @@ When click cancle button, cancle button method is executed.
 
 ```
 
-##### Alert list Dialog
+##### <a name="list"><a/> Alert list Dialog
 - On ViewController, create a button that pop up check list view when you click on it.
 
  ```{swift}
@@ -254,7 +259,7 @@ self.view.addSubview(alertListBtn)
  ```
 
 
-##### Alert list without image Dialog
+##### <a name="withoutimage"><a/> Alert list without image Dialog
 - On ViewController, create a button that pop up check list view when you click on it.
 
  ```{swift}
@@ -281,7 +286,7 @@ self.view.addSubview(alertListWithoutImageBtn)
  ```
 
 
-## License
+## <a name="license"> License </a>
  ```
 The MIT License (MIT)
 
