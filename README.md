@@ -36,7 +36,7 @@ MaterialPopup is Dialog that have 3 type(checkbox list, alert, progressbar) that
 <tr>
 <td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/LinearProgress.gif" width='187' alt="checkList gif"></td>
 <td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/CircularProgress.gif" width='187' alt="Progressbar gif"></td>
-<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/SemiCircleProgress.gif" width='187' alt="Progressbar gif"></td>
+<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/SemiCircularProgress.gif" width='187' alt="Progressbar gif"></td>
 </tr>
 <th>CheckList</th><th>AlertWithImage</th><th>AlertWithoutImage</th>
 <tr>
