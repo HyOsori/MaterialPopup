@@ -42,7 +42,7 @@ This library provide 3 types of progress dialog.<BR>
 - circular type
 - semicircular type
 
-When click cancle button, cancle button callback method is executed.
+When click cancle/ok button, cancle/ok button callback method is executed.
 
 ```{swift}
     // method that on click cancel button's callback
