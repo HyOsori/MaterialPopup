@@ -25,6 +25,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         //임의로 progressCount의 위치 등 변경할 수 있음.
 //        dialog.mpProgressView?._progressCount?.frame = CGRect(x: 0, y: 150, width: 30, height: 30)
         
+        // linear progress dialog button
         linearProgressBtn = UIButton(frame: CGRect(x: 30, y: self.view.frame.height/2 - 50, width: 100, height: 100))
         linearProgressBtn.setTitle("LinearPrgress", for: .normal)
         linearProgressBtn.backgroundColor = .white
@@ -32,6 +33,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         linearProgressBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         linearProgressBtn.addTarget(self, action: #selector(onClickLinearProgress(_:)), for: .touchUpInside)
         
+        // circular progress dialog button
         circleProgressBtn = UIButton(frame: CGRect(x: 155, y: self.view.frame.height/2 - 50, width: 100, height: 100))
         circleProgressBtn.setTitle("CircularPrgress", for: .normal)
         circleProgressBtn.backgroundColor = .white
@@ -39,7 +41,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         circleProgressBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         circleProgressBtn.addTarget(self, action: #selector(onClickCircleProgress(_:)), for: .touchUpInside)
         
-        
+        // semicircular progress dialog button
         semicircleProgressBtn = UIButton(frame: CGRect(x: 280, y: self.view.frame.height/2 - 50, width: 100, height: 100))
         semicircleProgressBtn.setTitle("SemiCirclePrgress", for: .normal)
         semicircleProgressBtn.backgroundColor = .white
@@ -47,6 +49,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         semicircleProgressBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         semicircleProgressBtn.addTarget(self, action: #selector(onClickSemicircleProgress(_:)), for: .touchUpInside)
         
+        // checklist dialog button
         checkListBtn = UIButton(frame: CGRect(x: 30, y: self.view.frame.height/2 + 70, width: 100, height: 100))
         checkListBtn.setTitle("checkListBtn", for: .normal)
         checkListBtn.backgroundColor = .white
@@ -54,6 +57,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         checkListBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         checkListBtn.addTarget(self, action: #selector(onClickCheckList(_:)), for: .touchUpInside)
         
+        // alert dialog button
         alertListBtn = UIButton(frame: CGRect(x: 155, y: self.view.frame.height/2 + 70, width: 100, height: 100))
         alertListBtn.setTitle("alertListBtn", for: .normal)
         alertListBtn.backgroundColor = .white
@@ -61,13 +65,13 @@ class ViewController: UIViewController, MPDialogDelegate {
         alertListBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         alertListBtn.addTarget(self, action: #selector(onClickAlertList(_:)), for: .touchUpInside)
         
+        // alert dialog without image button
         alertListWithoutImageBtn = UIButton(frame: CGRect(x: 280, y: self.view.frame.height/2 + 70, width: 100, height: 100))
         alertListWithoutImageBtn.setTitle("alertListBtn", for: .normal)
         alertListWithoutImageBtn.backgroundColor = .white
         alertListWithoutImageBtn.setTitleColor(.black, for: .normal)
         alertListWithoutImageBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         alertListWithoutImageBtn.addTarget(self, action: #selector(onClickAlertWithoutImage(_:)), for: .touchUpInside)
-            
         
         self.view.addSubview(linearProgressBtn)
         self.view.addSubview(circleProgressBtn)
@@ -80,6 +84,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    // Alert dialog's method
     func onClickAlertList(_ sender: UIButton) {
         dialog = MPDialog(MPAlertframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), title: "Alert View title", image: UIImage(named: "jordan"), message: "Alert View message test...............")
         
@@ -87,6 +92,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         dialog.showMPDialog(superController: self)
     }
     
+    // Alert dialog without image's method
     func onClickAlertWithoutImage(_ sender: UIButton) {
         dialog = MPDialog(MPAlertframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), title: "Alert View title", image: nil, message: "Alert View message test...............")
         
@@ -94,6 +100,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         dialog.showMPDialog(superController: self)
     }
     
+    // Checklist dialog method
     func onClickCheckList(_ sender: UIButton) {
         
         var checkList: [checkListData]! = []
@@ -111,6 +118,7 @@ class ViewController: UIViewController, MPDialogDelegate {
 
     }
     
+    // Linear progress dialog method
     func onClickLinearProgress(_ sender: UIButton) {
         
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .linear, progressCompletionHandler: { (progressDialog) in
@@ -137,6 +145,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         }
     }
     
+    // Circle progress dialog method
     func onClickCircleProgress(_ sender: UIButton) {
         
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .circular, progressCompletionHandler: { (progressDialog) in
@@ -145,7 +154,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         dialog.showMPDialog(superController: self)
         self.dialog.mpProgressView?._progressCount?.text = "0%"
         self.dialog.mpProgressView?.counter = 0
-        //Custom cacnelBtn.
+        // Custom cacnelBtn.
         //        self.dialog.mpProgressView?.cancelBtn.setTitle("Cancel", for: .normal)
         self.dialog.MPDialogDelegate = self
         
@@ -163,6 +172,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         }
     }
     
+    // Semicircle progress dialog method
     func onClickSemicircleProgress(_ sender: UIButton) {
         
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .semicircle, progressCompletionHandler: { (progressDialog) in
@@ -189,12 +199,12 @@ class ViewController: UIViewController, MPDialogDelegate {
         }
     }            
     
-    //method that on click cancel button's callback
+    // method that on click cancel button's callback
     func onClickCancelButtonCallback() {
         self.dialog.removeFromSuperview()
     }
     
-    //method that on click ok button's callback
+    // method that on click ok button's callback
     func onClickOKButtonCallback() {
         self.dialog.removeFromSuperview()
     }

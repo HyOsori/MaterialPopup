@@ -8,6 +8,13 @@
 
 import UIKit
 
+/**
+ MPCheckListDialog.
+ 
+ - Useage : checklist data array.
+ */
+
+// ChecList Cell
 class checkListCell: UITableViewCell {
     
     var checklist: UILabel!
@@ -23,6 +30,7 @@ class checkListCell: UITableViewCell {
     }
 }
 
+// CheckList table view
 class MPCheckListDialog: UIView, UITableViewDelegate,UITableViewDataSource {
     var checkListTableView: UITableView!
     var checkListData: [checkListData]! = []
@@ -30,6 +38,7 @@ class MPCheckListDialog: UIView, UITableViewDelegate,UITableViewDataSource {
     init(frame: CGRect, checkListData: [checkListData]) {
         super.init(frame: frame)
         self.checkListData = checkListData
+        // checklist table view layout
         checkListTableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         checkListTableView.register(checkListCell.self, forCellReuseIdentifier: "checkListCell")
         checkListTableView.backgroundColor = .red

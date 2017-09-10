@@ -23,7 +23,7 @@ public enum MPDialogType {
     case progressBar
 }
 
-//Dialog Animation
+// Dialog Animation
 public enum MPDialogAnimationType {
     case pop
 }
@@ -90,8 +90,7 @@ class MPDialog: UIView {
         
     }
     
-    
-    //show MPDialog
+    // show MPDialog
     open func showMPDialog(superController: UIViewController) {
         superController.view.addSubview(self)
     }
