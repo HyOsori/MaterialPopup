@@ -3,16 +3,16 @@
 
 [2. Preview](#preview)
 
-[3. Useage](#useage)
+[3. Usage](#usage)
 
 - [Progress Dialog](#progress)
-  - [linear progress dialog](#linear)
-  - [circular progress dialog](#circular)
-  - [semicircular progress dialog](#semicircular)
+ - [linear progress dialog](#linear)
+ - [circular progress dialog](#circular)
+ - [semicircular progress dialog](#semicircular)
 - [Checklist Dialog](#checklist)
 - [Alert Dialog](#alert)
-  - [Alert list dialog](#list)
-  - [Alert list without image dialog](#withoutimage)
+ - [Alert list dialog](#list)
+ - [Alert list without image dialog](#withoutimage)
 
 [4. License](#license)
 
@@ -31,11 +31,10 @@ MaterialPopup is Dialog that have 4 type(checkbox list, alert, progressbar, acti
 <td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/checkList.gif" width='187' alt="checkList gif"></td>
 <td></td>
 <td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/progress.gif" width='187' alt="Progressbar gif"></td>
-<td></td>
 </tr>
 </table>
 
-## <a name="useasge"> Useage </a>
+## <a name="usage"> Usage </a>
 ### <a name="progress"> Progress Dialog </a>
 This library provide 3 types of progress dialog.<BR>
 
@@ -57,7 +56,7 @@ When click cancle button, cancle button callback method is executed.
     }
 ```
 
-#### <a name="linear"><a/> linear progress dialog
+##### <a name="linear"><a/> linear progress dialog
 - On ViewController, create create a button that pop up linear progress view when you click on it.
 
  ```{swift}
@@ -100,7 +99,7 @@ self.view.addSubview(linearProgressBtn)
     }
  ```
  
-#### <a name="circular"><a/> circular progress dialog
+##### <a name="circular"><a/> circular progress dialog
 - On ViewController, create create a button that pop up circular progress view when you click on it.
 
  ```{swift}
@@ -141,7 +140,7 @@ self.view.addSubview(circleProgressBtn)
     }
  ```
 
-#### <a name="semicircular"><a/> semicircular progress dialog
+##### <a name="semicircular"><a/> semicircular progress dialog
 - On ViewController, create create a button that pop up semicircular progress view when you click on it.
 
  ```{swift}
@@ -233,7 +232,7 @@ When click cancle button, cancle button method is executed.
 
 ```
 
-#### <a name="list"><a/> Alert list Dialog
+##### <a name="list"><a/> Alert list Dialog
 - On ViewController, create a button that pop up check list view when you click on it.
 
  ```{swift}
@@ -259,7 +258,7 @@ self.view.addSubview(alertListBtn)
  ```
 
 
-#### <a name="withoutimage"><a/> Alert list without image Dialog
+##### <a name="withoutimage"><a/> Alert list without image Dialog
 - On ViewController, create a button that pop up check list view when you click on it.
 
  ```{swift}
