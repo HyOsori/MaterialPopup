@@ -18,7 +18,7 @@ class MPAlertDialog: UIView {
     ///Alert View's title
     open var titleLabel: UILabel!
     
-    open var image: UIImageView!
+    open var imageView: UIImageView!
     
     open var messageLabel: UILabel!
     
@@ -38,16 +38,54 @@ class MPAlertDialog: UIView {
         if(image == nil) {
             titleLabel = UILabel(frame: CGRect(x: 0, y: frame.midY/2, width: frame.width, height: frame.height/4 > 40 ? 40 : frame.height/4))
             titleLabel.textAlignment = .center
-            titleLabel.backgroundColor = .gray
             titleLabel.text = title
             addSubview(titleLabel)
             
-            messageLabel = UILabel(frame: CGRect(x: 0, y: frame.midY, width: frame.width, height: frame.height/4))
+            messageLabel = UILabel(frame: CGRect(x: 0, y: titleLabel.frame.origin.y + titleLabel.frame.height, width: frame.width, height: frame.height - titleLabel.frame.maxY - 50))
             messageLabel.textAlignment = .center
-            messageLabel.backgroundColor = .blue
             messageLabel.text = message
             addSubview(messageLabel)
+            
+            okButton = UIButton(frame: CGRect(x: frame.width/2 - 60, y: frame.height - 50, width: 50, height: 30))
+            okButton.setTitle("OK", for: .normal)
+            okButton.setTitleColor(.black, for: .normal)
+            okButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            addSubview(okButton)
+            
+            cancelButton = UIButton(frame: CGRect(x: frame.width/2 + 10, y: frame.height - 50, width: 50, height: 30))
+            cancelButton.setTitle("Cancel", for: .normal)
+            cancelButton.setTitleColor(.black, for: .normal)
+            cancelButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            addSubview(cancelButton)
+            
         } else {
+            imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height/2))
+            imageView.image = image!
+            imageView.contentMode = .scaleAspectFit
+            addSubview(imageView)
+            titleLabel = UILabel(frame: CGRect(x: 0, y: frame.midY, width: frame.width, height: frame.height/4 > 40 ? 40 : frame.height/4))
+            titleLabel.textAlignment = .center
+            titleLabel.text = title
+            addSubview(titleLabel)
+            
+            messageLabel = UILabel(frame: CGRect(x: 0, y: titleLabel.frame.origin.y + titleLabel.frame.height, width: frame.width, height: frame.height - titleLabel.frame.maxY - 50))
+            messageLabel.textAlignment = .center
+            messageLabel.center.y = (frame.midY + frame.maxY)/2
+            messageLabel.text = message
+            addSubview(messageLabel)
+            
+            okButton = UIButton(frame: CGRect(x: frame.width/2 - 60, y: frame.height - 50, width: 50, height: 30))
+            okButton.setTitle("OK", for: .normal)
+            okButton.setTitleColor(.black, for: .normal)
+            okButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            addSubview(okButton)
+            
+            cancelButton = UIButton(frame: CGRect(x: frame.width/2 + 10, y: frame.height - 50, width: 50, height: 30))
+            cancelButton.setTitle("Cancel", for: .normal)
+            cancelButton.setTitleColor(.black, for: .normal)
+            cancelButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            
+            addSubview(cancelButton)
             
         }
     }

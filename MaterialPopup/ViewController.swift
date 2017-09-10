@@ -16,6 +16,7 @@ class ViewController: UIViewController, MPDialogDelegate {
     
     var checkListBtn: UIButton!
     var alertListBtn: UIButton!
+    var alertListWithoutImageBtn: UIButton!
     var timer : Timer!
     var p: Float = 10.0
     
@@ -46,34 +47,51 @@ class ViewController: UIViewController, MPDialogDelegate {
         semicircleProgressBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         semicircleProgressBtn.addTarget(self, action: #selector(onClickSemicircleProgress(_:)), for: .touchUpInside)
         
-        checkListBtn = UIButton(frame: CGRect(x: 92.5, y: self.view.frame.height/2 + 70, width: 100, height: 100))
+        checkListBtn = UIButton(frame: CGRect(x: 30, y: self.view.frame.height/2 + 70, width: 100, height: 100))
         checkListBtn.setTitle("checkListBtn", for: .normal)
         checkListBtn.backgroundColor = .white
         checkListBtn.setTitleColor(.black, for: .normal)
         checkListBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         checkListBtn.addTarget(self, action: #selector(onClickCheckList(_:)), for: .touchUpInside)
         
-        alertListBtn = UIButton(frame: CGRect(x: 200, y: self.view.frame.height/2 + 70, width: 100, height: 100))
+        alertListBtn = UIButton(frame: CGRect(x: 155, y: self.view.frame.height/2 + 70, width: 100, height: 100))
         alertListBtn.setTitle("alertListBtn", for: .normal)
         alertListBtn.backgroundColor = .white
         alertListBtn.setTitleColor(.black, for: .normal)
         alertListBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         alertListBtn.addTarget(self, action: #selector(onClickAlertList(_:)), for: .touchUpInside)
         
+        alertListWithoutImageBtn = UIButton(frame: CGRect(x: 280, y: self.view.frame.height/2 + 70, width: 100, height: 100))
+        alertListWithoutImageBtn.setTitle("alertListBtn", for: .normal)
+        alertListWithoutImageBtn.backgroundColor = .white
+        alertListWithoutImageBtn.setTitleColor(.black, for: .normal)
+        alertListWithoutImageBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        alertListWithoutImageBtn.addTarget(self, action: #selector(onClickAlertWithoutImage(_:)), for: .touchUpInside)
+            
+        
         self.view.addSubview(linearProgressBtn)
         self.view.addSubview(circleProgressBtn)
         self.view.addSubview(semicircleProgressBtn)
         self.view.addSubview(checkListBtn)
         self.view.addSubview(alertListBtn)
+        self.view.addSubview(alertListWithoutImageBtn)
         self.view.backgroundColor = .black
 
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     func onClickAlertList(_ sender: UIButton) {
-        dialog = MPDialog(MPAlertframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), title: "이것만 하고 집가자!!!", image: nil, message: "으아아아아암휴이ㅠㅎ마ㅣ듀힞ㅁ")
+        dialog = MPDialog(MPAlertframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), title: "Alert View title", image: UIImage(named: "jordan"), message: "Alert View message test...............")
         
-        self.view.addSubview(dialog)
+        dialog.MPDialogDelegate = self
+        dialog.showMPDialog(superController: self)
+    }
+    
+    func onClickAlertWithoutImage(_ sender: UIButton) {
+        dialog = MPDialog(MPAlertframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), title: "Alert View title", image: nil, message: "Alert View message test...............")
+        
+        dialog.MPDialogDelegate = self
+        dialog.showMPDialog(superController: self)
     }
     
     func onClickCheckList(_ sender: UIButton) {
@@ -87,7 +105,7 @@ class ViewController: UIViewController, MPDialogDelegate {
 
         dialog = MPDialog(MPCheckListframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), checkListData: checkList)
         
-        self.view.addSubview(dialog)
+        dialog.showMPDialog(superController: self)
 
         self.dismiss(animated: true, completion: nil)
 
@@ -98,7 +116,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .linear, progressCompletionHandler: { (progressDialog) in
             print("progress completed")
         })
-        self.view.addSubview(dialog)
+        dialog.showMPDialog(superController: self)
         self.dialog.mpProgressView?._progressCount?.text = "0%"
         self.dialog.mpProgressView?.counter = 0
         //Custom cacnelBtn.
@@ -124,7 +142,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .circular, progressCompletionHandler: { (progressDialog) in
             print("progress completed")
         })
-        self.view.addSubview(dialog)
+        dialog.showMPDialog(superController: self)
         self.dialog.mpProgressView?._progressCount?.text = "0%"
         self.dialog.mpProgressView?.counter = 0
         //Custom cacnelBtn.
@@ -150,7 +168,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .semicircle, progressCompletionHandler: { (progressDialog) in
             print("progress completed")
         })
-        self.view.addSubview(dialog)
+        dialog.showMPDialog(superController: self)
         self.dialog.mpProgressView?._progressCount?.text = "0%"
         self.dialog.mpProgressView?.counter = 0
         //Custom cacnelBtn.
@@ -169,12 +187,15 @@ class ViewController: UIViewController, MPDialogDelegate {
                 }
             }
         }
+    }            
+    
+    //method that on click cancel button's callback
+    func onClickCancelButtonCallback() {
+        self.dialog.removeFromSuperview()
     }
     
-    
-    //ProgressBar에서 취소 버튼을 눌렀을 경우에 대한 콜백을 받는 함수.
-    func progressCancelButtonCallback() {
-        print("on click Cancel button")
+    //method that on click ok button's callback
+    func onClickOKButtonCallback() {
         self.dialog.removeFromSuperview()
     }
     

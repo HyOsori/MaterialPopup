@@ -83,16 +83,26 @@ class MPDialog: UIView {
         mpProgressView?.progressTitle = "0%"
         //        mpProgressView?.progressBar.progress = 1.0
         mpProgressView?.handler = progressCompletionHandler
-        mpProgressView?.cancelBtn.addTarget(self, action: #selector(onClickProgressCancelButton(_:)), for: .touchUpInside)
+        mpProgressView?.cancelBtn.addTarget(self, action: #selector(onClickCancelButton(_:)), for: .touchUpInside)
         
         self.addSubview(overLayView)
         addSubview(mpProgressView!)
         
     }
     
-    func onClickProgressCancelButton(_ sender: UIButton) {
+    
+    //show MPDialog
+    open func showMPDialog(superController: UIViewController) {
+        superController.view.addSubview(self)
+    }
+    
+    open func onClickCancelButton(_ sender: UIButton) {
         //delegate로 콜백을 넘겨주는 부분인데 optional이므로, delegate가 nil값일 경우에는 이 메소드를 타지 않는다.
-        MPDialogDelegate?.progressCancelButtonCallback?()
+        MPDialogDelegate?.onClickCancelButtonCallback?()
+    }
+    
+    open func onClickOKButton(_ sender: UIButton) {
+        MPDialogDelegate?.onClickOKButtonCallback!()
     }
     
     func addItem(handler: @escaping ((MPProgressDialog) -> Void)) {
@@ -117,6 +127,11 @@ class MPDialog: UIView {
         addSubview(mpCheckListView!)
     }
     
+    
+    /**
+      AlertView init
+     
+    */
     init(MPAlertframe: CGRect, title: String?, image: UIImage?, message: String?) {
         overLayView = UIView(frame: CGRect(x: -MPAlertframe.minX, y: -MPAlertframe.minY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         overLayView.backgroundColor = mpOverlayViewColor!
@@ -124,6 +139,9 @@ class MPDialog: UIView {
         super.init(frame: MPAlertframe)
         mpDialogType = .alert
         mpAlertView = MPAlertDialog(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), title: title, image: image, message: message)
+        
+        mpAlertView?.cancelButton.addTarget(self, action: #selector(onClickCancelButton(_:)), for: .touchUpInside)
+        mpAlertView?.okButton.addTarget(self, action: #selector(onClickOKButton(_:)), for: .touchUpInside)
         self.addSubview(overLayView)
         addSubview(mpAlertView!)
     }
@@ -163,7 +181,20 @@ class MPDialog: UIView {
             self.removeFromSuperview()
             return nil
         case.alert:
-            print("alert")
+            if(!self.isUserInteractionEnabled || self.isHidden) {
+                return nil
+            }
+            if(self.point(inside: point, with: event)) {
+                for subview in self.subviews.reversed() {
+                    let convetedPoint = subview.convert(point, from: self)
+                    let hitTestView = subview.hitTest(convetedPoint, with: event)
+                    if((hitTestView) != nil) {
+                        return hitTestView
+                    }
+                }
+                return self
+            }
+            self.removeFromSuperview()
         }
         return nil
     }    

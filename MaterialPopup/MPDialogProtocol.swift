@@ -16,5 +16,7 @@ import UIKit
  */
 @objc
 public protocol MPDialogDelegate {
-    @objc optional func progressCancelButtonCallback()
+    @objc optional func onClickCancelButtonCallback()
+    
+    @objc optional func onClickOKButtonCallback()
 }

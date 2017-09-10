@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		760A02DF1F0CC514006B048F /* MPDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760A02DE1F0CC514006B048F /* MPDialog.swift */; };
 		760A02E11F0CDAC1006B048F /* MPProgressDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760A02E01F0CDAC1006B048F /* MPProgressDialog.swift */; };
+		760BD9991F5D46730081B7DF /* MPAlertDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760BD9981F5D46730081B7DF /* MPAlertDialog.swift */; };
 		7621ED191F246FA5006A3A04 /* MPDialogProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7621ED181F246FA5006A3A04 /* MPDialogProtocol.swift */; };
 		763122551F03BFBE005C89D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763122541F03BFBE005C89D2 /* AppDelegate.swift */; };
 		763122571F03BFBE005C89D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763122561F03BFBE005C89D2 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		760A02DE1F0CC514006B048F /* MPDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDialog.swift; sourceTree = "<group>"; };
 		760A02E01F0CDAC1006B048F /* MPProgressDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPProgressDialog.swift; sourceTree = "<group>"; };
+		760BD9981F5D46730081B7DF /* MPAlertDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPAlertDialog.swift; sourceTree = "<group>"; };
 		7621ED181F246FA5006A3A04 /* MPDialogProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPDialogProtocol.swift; sourceTree = "<group>"; };
 		763122511F03BFBE005C89D2 /* MaterialPopup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaterialPopup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		763122541F03BFBE005C89D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				760A02E01F0CDAC1006B048F /* MPProgressDialog.swift */,
 				7621ED181F246FA5006A3A04 /* MPDialogProtocol.swift */,
 				78F888BD1F372F6200027EE5 /* MPCheckListDialog.swift */,
+				760BD9981F5D46730081B7DF /* MPAlertDialog.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				78F888BE1F372F6200027EE5 /* MPCheckListDialog.swift in Sources */,
 				7621ED191F246FA5006A3A04 /* MPDialogProtocol.swift in Sources */,
 				763122571F03BFBE005C89D2 /* ViewController.swift in Sources */,
+				760BD9991F5D46730081B7DF /* MPAlertDialog.swift in Sources */,
 				763122551F03BFBE005C89D2 /* AppDelegate.swift in Sources */,
 				760A02E11F0CDAC1006B048F /* MPProgressDialog.swift in Sources */,
 			);
