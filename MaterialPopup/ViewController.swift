@@ -26,7 +26,7 @@ class ViewController: UIViewController, MPDialogDelegate {
 //        dialog.mpProgressView?._progressCount?.frame = CGRect(x: 0, y: 150, width: 30, height: 30)
         
         // linear progress dialog button
-        linearProgressBtn = UIButton(frame: CGRect(x: 30, y: self.view.frame.height/2 - 50, width: 100, height: 100))
+        linearProgressBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 200, width: 200, height: 50))
         linearProgressBtn.setTitle("LinearPrgress", for: .normal)
         linearProgressBtn.backgroundColor = .white
         linearProgressBtn.setTitleColor(.black, for: .normal)
@@ -34,7 +34,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         linearProgressBtn.addTarget(self, action: #selector(onClickLinearProgress(_:)), for: .touchUpInside)
         
         // circular progress dialog button
-        circleProgressBtn = UIButton(frame: CGRect(x: 155, y: self.view.frame.height/2 - 50, width: 100, height: 100))
+        circleProgressBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 130, width: 200, height: 50))
         circleProgressBtn.setTitle("CircularPrgress", for: .normal)
         circleProgressBtn.backgroundColor = .white
         circleProgressBtn.setTitleColor(.black, for: .normal)
@@ -42,7 +42,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         circleProgressBtn.addTarget(self, action: #selector(onClickCircleProgress(_:)), for: .touchUpInside)
         
         // semicircular progress dialog button
-        semicircleProgressBtn = UIButton(frame: CGRect(x: 280, y: self.view.frame.height/2 - 50, width: 100, height: 100))
+        semicircleProgressBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 60, width: 200, height: 50))
         semicircleProgressBtn.setTitle("SemiCirclePrgress", for: .normal)
         semicircleProgressBtn.backgroundColor = .white
         semicircleProgressBtn.setTitleColor(.black, for: .normal)
@@ -50,7 +50,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         semicircleProgressBtn.addTarget(self, action: #selector(onClickSemicircleProgress(_:)), for: .touchUpInside)
         
         // checklist dialog button
-        checkListBtn = UIButton(frame: CGRect(x: 30, y: self.view.frame.height/2 + 70, width: 100, height: 100))
+        checkListBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 + 10, width: 200, height: 50))
         checkListBtn.setTitle("checkListBtn", for: .normal)
         checkListBtn.backgroundColor = .white
         checkListBtn.setTitleColor(.black, for: .normal)
@@ -58,7 +58,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         checkListBtn.addTarget(self, action: #selector(onClickCheckList(_:)), for: .touchUpInside)
         
         // alert dialog button
-        alertListBtn = UIButton(frame: CGRect(x: 155, y: self.view.frame.height/2 + 70, width: 100, height: 100))
+        alertListBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 + 80, width: 200, height: 50))
         alertListBtn.setTitle("alertListBtn", for: .normal)
         alertListBtn.backgroundColor = .white
         alertListBtn.setTitleColor(.black, for: .normal)
@@ -66,7 +66,7 @@ class ViewController: UIViewController, MPDialogDelegate {
         alertListBtn.addTarget(self, action: #selector(onClickAlertList(_:)), for: .touchUpInside)
         
         // alert dialog without image button
-        alertListWithoutImageBtn = UIButton(frame: CGRect(x: 280, y: self.view.frame.height/2 + 70, width: 100, height: 100))
+        alertListWithoutImageBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 + 150, width: 200, height: 50))
         alertListWithoutImageBtn.setTitle("alertListBtn", for: .normal)
         alertListWithoutImageBtn.backgroundColor = .white
         alertListWithoutImageBtn.setTitleColor(.black, for: .normal)
