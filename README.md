@@ -1,9 +1,15 @@
 # Table of Contents.
+![Swift 3.0](https://img.shields.io/badge/swift-3.1-orange.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![pod](https://img.shields.io/badge/pod-v1.0-lightgrey.svg)
+
 [1. MaterialPopup](#materialpopup)
 
 [2. Preview](#preview)
 
-[3. Usage](#usage)
+[3. Installation](#installation)
+
+[4. Usage](#usage)
 
 - [Progress Dialog](#progress)
  - [linear progress dialog](#linear)
@@ -14,7 +20,7 @@
  - [Alert list dialog](#list)
  - [Alert list without image dialog](#withoutimage)
 
-[4. License](#license)
+[5. License](#license)
 
 
 # <a name="materialpopup"> MaterialPopup </a>
@@ -25,14 +31,29 @@ MaterialPopup is Dialog that have 4 type(checkbox list, alert, progressbar, acti
 
 <table>
 <tr>
-<th>Checklist</th><th>Alert</th><th>Progressbar</th>
+<th>LinearProgress</th><th>CircularPrgress</th><th>SemiCirclePrgress</th>
 </tr>
 <tr>
+<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/LinearProgress.gif" width='187' alt="checkList gif"></td>
+<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/CircularPrgress.gif" width='187' alt="Progressbar gif"></td>
+<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/SemiCirclePrgress.gif" width='187' alt="Progressbar gif"></td>
+</tr>
+<th>CheckList</th><th>AlertWithImage</th><th>AlertWithoutImage</th>
+<tr>
 <td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/checkList.gif" width='187' alt="checkList gif"></td>
-<td></td>
-<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/progress.gif" width='187' alt="Progressbar gif"></td>
+<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/alertList.gif" width='187' alt="Progressbar gif"></td>
+<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/alertListWithoutImage.gif" width='187' alt="Progressbar gif"></td>
 </tr>
 </table>
+
+## <a name="installation"> Installation </a>
+### CocoaPods
+```
+  pod "MaterialPopup", "~> 1.0"
+```
+
+### Manually
+To install MaterialPopup manually in app,  just drag the MPDialog, MPProgressDialog, MPDialogProtocol, MPCheckListDialog, MPAlertDialog file into your project.
 
 ## <a name="usage"> Usage </a>
 ### <a name="progress"> Progress Dialog </a>
@@ -49,7 +70,7 @@ When click cancle/ok button, cancle/ok button callback method is executed.
     func onClickCancelButtonCallback() {
         self.dialog.removeFromSuperview()
     }
-    
+
     // method that on click ok button's callback
     func onClickOKButtonCallback() {
         self.dialog.removeFromSuperview()
@@ -74,7 +95,7 @@ self.view.addSubview(linearProgressBtn)
 
  ```{swift}
     func onClickLinearProgress(_ sender: UIButton) {
-        
+
         // set dialog popup view layout
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .linear, progressCompletionHandler: { (progressDialog) in
             print("progress completed")
@@ -86,7 +107,7 @@ self.view.addSubview(linearProgressBtn)
         // Set cacnelBtn title.
         // self.dialog.mpProgressView?.cancelBtn.setTitle("Cancel", for: .normal)
         self.dialog.MPDialogDelegate = self
-        
+
         DispatchQueue.global().async {
             for i in 0...100 {
                 usleep(10000)
@@ -98,7 +119,7 @@ self.view.addSubview(linearProgressBtn)
         }
     }
  ```
- 
+
 ##### <a name="circular"><a/> circular progress dialog
 - On ViewController, create create a button that pop up circular progress view when you click on it.
 
@@ -117,7 +138,7 @@ self.view.addSubview(circleProgressBtn)
 
  ```{swift}
     func onClickCircleProgress(_ sender: UIButton) {
-        
+
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .circular, progressCompletionHandler: { (progressDialog) in
             print("progress completed")
         })
@@ -127,7 +148,7 @@ self.view.addSubview(circleProgressBtn)
         // Set cacnelBtn title.
         // self.dialog.mpProgressView?.cancelBtn.setTitle("Cancel", for: .normal)
         self.dialog.MPDialogDelegate = self
-        
+
         DispatchQueue.global().async {
             for i in 0...100 {
                 usleep(10000)
@@ -158,7 +179,7 @@ self.view.addSubview(semicircleProgressBtn)
 
  ```{swift}
      func onClickSemicircleProgress(_ sender: UIButton) {
-        
+
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .semicircle, progressCompletionHandler: { (progressDialog) in
             print("progress completed")
         })
@@ -168,7 +189,7 @@ self.view.addSubview(semicircleProgressBtn)
         // Setting cacnelBtn title.
         // self.dialog.mpProgressView?.cancelBtn.setTitle("Cancel", for: .normal)
         self.dialog.MPDialogDelegate = self
-        
+
         DispatchQueue.global().async {
             for i in 0...100 {
                 usleep(10000)
@@ -193,7 +214,7 @@ checkListBtn.backgroundColor = .white
 checkListBtn.setTitleColor(.black, for: .normal)
 checkListBtn.titleLabel?.adjustsFontSizeToFitWidth = true
 checkListBtn.addTarget(self, action: #selector(onClickCheckList(_:)), for: .touchUpInside)
-       
+
 self.view.addSubview(checkListBtn)
 ```
 
@@ -207,13 +228,13 @@ self.view.addSubview(checkListBtn)
        checkList.append(checkListData(textlabel: "checklist3", mark: true))
        checkList.append(checkListData(textlabel: "checklist4", mark: false))
        checkList.append(checkListData(textlabel: "checklist5", mark: false))
-   
+
        dialog = MPDialog(MPCheckListframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), checkListData: checkList)
-       
+
        dialog.showMPDialog(superController: self)
-   
+
        self.dismiss(animated: true, completion: nil)
-   
+
    }
  ```
 
@@ -251,7 +272,7 @@ self.view.addSubview(alertListBtn)
  ```{swift}
     func onClickAlertList(_ sender: UIButton) {
         dialog = MPDialog(MPAlertframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), title: "Alert View title", image: UIImage(named: "jordan"), message: "Alert View message test...............")
-        
+
         dialog.MPDialogDelegate = self
         dialog.showMPDialog(superController: self)
     }
@@ -278,7 +299,7 @@ self.view.addSubview(alertListWithoutImageBtn)
  ```{swift}
     func onClickAlertWithoutImage(_ sender: UIButton) {
         dialog = MPDialog(MPAlertframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), title: "Alert View title", image: nil, message: "Alert View message test...............")
-        
+
         dialog.MPDialogDelegate = self
         dialog.showMPDialog(superController: self)
     }
