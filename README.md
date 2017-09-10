@@ -6,13 +6,13 @@
 [3. Useage](#useage)
 
 - [Progress Dialog](#progress)
- - [linear progress dialog](#linear)
- - [circular progress dialog](#circular)
- - [semicircular progress dialog](#semicircular)
+  - [linear progress dialog](#linear)
+  - [circular progress dialog](#circular)
+  - [semicircular progress dialog](#semicircular)
 - [Checklist Dialog](#checklist)
 - [Alert Dialog](#alert)
- - [Alert list dialog](#list)
- - [Alert list without image dialog](#withoutimage)
+  - [Alert list dialog](#list)
+  - [Alert list without image dialog](#withoutimage)
 
 [4. License](#license)
 
