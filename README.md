@@ -25,7 +25,7 @@
 
 # <a name="materialpopup"> MaterialPopup </a>
 
-MaterialPopup is Dialog that have 4 type(checkbox list, alert, progressbar, actionsheet) that customized
+MaterialPopup is Dialog that have 3 type(checkbox list, alert, progressbar) that customized
 
 ## <a name="preview"> Preview </a>
 
@@ -35,8 +35,8 @@ MaterialPopup is Dialog that have 4 type(checkbox list, alert, progressbar, acti
 </tr>
 <tr>
 <td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/LinearProgress.gif" width='187' alt="checkList gif"></td>
-<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/CircularPrgress.gif" width='187' alt="Progressbar gif"></td>
-<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/SemiCirclePrgress.gif" width='187' alt="Progressbar gif"></td>
+<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/CircularProgress.gif" width='187' alt="Progressbar gif"></td>
+<td><img src="https://github.com/HyOsori/MaterialPopup/blob/master/Images/SemiCircleProgress.gif" width='187' alt="Progressbar gif"></td>
 </tr>
 <th>CheckList</th><th>AlertWithImage</th><th>AlertWithoutImage</th>
 <tr>
