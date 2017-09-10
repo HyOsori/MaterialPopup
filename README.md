@@ -12,13 +12,13 @@
 [4. Usage](#usage)
 
 - [Progress Dialog](#progress)
- - [linear progress dialog](#linear)
- - [circular progress dialog](#circular)
- - [semicircular progress dialog](#semicircular)
+  - [linear progress dialog](#linear)
+  - [circular progress dialog](#circular)
+  - [semicircular progress dialog](#semicircular)
 - [Checklist Dialog](#checklist)
 - [Alert Dialog](#alert)
- - [Alert list dialog](#list)
- - [Alert list without image dialog](#withoutimage)
+  - [Alert list dialog](#list)
+  - [Alert list without image dialog](#withoutimage)
 
 [5. License](#license)
 
