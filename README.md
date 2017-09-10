@@ -1,4 +1,18 @@
-# MaterialPopup
+# Table of Contents.
+[MaterialPopup](#materialpopup)
+
+[Preview]
+
+[Useage]
+
+- [Progress Dialogue]
+ - [linear progress dialog]
+ - [circular progress dialog]
+ - [semicircular progress dialog]
+- 
+
+
+# <a name="materialpopup"> MaterialPopup </a>
 
 MaterialPopup is Dialog that have 4 type(checkbox list, alert, progressbar, actionsheet) that customized
 
@@ -38,7 +52,7 @@ When click cancle button, cancle button callback method is executed.
     }
 ```
 
-#### linear progress dialog
+##### linear progress dialog
 - On ViewController, create create a button that pop up linear progress view when you click on it.
 
  ```{swift}
@@ -81,7 +95,7 @@ self.view.addSubview(linearProgressBtn)
     }
  ```
  
-#### circular progress dialog
+##### circular progress dialog
 - On ViewController, create create a button that pop up circular progress view when you click on it.
 
  ```{swift}
@@ -122,7 +136,7 @@ self.view.addSubview(circleProgressBtn)
     }
  ```
 
-#### semicircular progress dialog
+##### semicircular progress dialog
 - On ViewController, create create a button that pop up semicircular progress view when you click on it.
 
  ```{swift}
@@ -214,7 +228,7 @@ When click cancle button, cancle button method is executed.
 
 ```
 
-#### Alert list Dialog
+##### Alert list Dialog
 - On ViewController, create a button that pop up check list view when you click on it.
 
  ```{swift}
@@ -240,7 +254,7 @@ self.view.addSubview(alertListBtn)
  ```
 
 
-#### Alert list without image Dialog
+##### Alert list without image Dialog
 - On ViewController, create a button that pop up check list view when you click on it.
 
  ```{swift}
