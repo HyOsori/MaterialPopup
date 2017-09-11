@@ -65,7 +65,7 @@ This library provide 3 types of progress dialog.<BR>
 
 When click cancle/ok button, cancle/ok button callback method is executed.
 
-```{swift}
+```swift
     // method that on click cancel button's callback
     func onClickCancelButtonCallback() {
         self.dialog.removeFromSuperview()
@@ -80,7 +80,7 @@ When click cancle/ok button, cancle/ok button callback method is executed.
 ##### <a name="linear"><a/> linear progress dialog
 - On ViewController, create create a button that pop up linear progress view when you click on it.
 
- ```{swift}
+ ```swift
  linearProgressBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 200, width: 200, height: 50))
 linearProgressBtn.setTitle("LinearPrgress", for: .normal)
 linearProgressBtn.backgroundColor = .white
@@ -93,7 +93,7 @@ self.view.addSubview(linearProgressBtn)
 
 - On click method, setting dialog view's layout.
 
- ```{swift}
+ ```swift
     func onClickLinearProgress(_ sender: UIButton) {
 
         // set dialog popup view layout
@@ -123,7 +123,7 @@ self.view.addSubview(linearProgressBtn)
 ##### <a name="circular"><a/> circular progress dialog
 - On ViewController, create create a button that pop up circular progress view when you click on it.
 
- ```{swift}
+ ```swift
  circleProgressBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 130, width: 200, height: 50))
 circleProgressBtn.setTitle("CircularPrgress", for: .normal)
 circleProgressBtn.backgroundColor = .white
@@ -136,7 +136,7 @@ self.view.addSubview(circleProgressBtn)
 
 - On click method, setting circular progress view's layout
 
- ```{swift}
+ ```swift
     func onClickCircleProgress(_ sender: UIButton) {
 
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .circular, progressCompletionHandler: { (progressDialog) in
@@ -164,7 +164,7 @@ self.view.addSubview(circleProgressBtn)
 ##### <a name="semicircular"><a/> semicircular progress dialog
 - On ViewController, create create a button that pop up semicircular progress view when you click on it.
 
- ```{swift}
+ ```swift
 semicircleProgressBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 60, width: 200, height: 50))
 semicircleProgressBtn.setTitle("SemiCirclePrgress", for: .normal)
 semicircleProgressBtn.backgroundColor = .white
@@ -177,7 +177,7 @@ self.view.addSubview(semicircleProgressBtn)
 
 - On click method, setting semicircle progress view's layout
 
- ```{swift}
+ ```swift
      func onClickSemicircleProgress(_ sender: UIButton) {
 
         dialog = MPDialog(MPProgressframe: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 - 100, width: 200, height: 200), dialogType: .semicircle, progressCompletionHandler: { (progressDialog) in
@@ -207,7 +207,7 @@ This library provide checklist dialog. <BR>
 
 - On ViewController, create a button that pop up check list view when you click on it.
 
- ```{swift}
+ ```swift
 checkListBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 + 10, width: 200, height: 50))
 checkListBtn.setTitle("checkListBtn", for: .normal)
 checkListBtn.backgroundColor = .white
@@ -220,7 +220,7 @@ self.view.addSubview(checkListBtn)
 
 - On click method, make cheklist array and checklist view's layout
 
- ```{swift}
+ ```swift
  func onClickCheckList(_ sender: UIButton) {
        var checkList: [checkListData]! = []
        checkList.append(checkListData(textlabel: "checklist1", mark: false))
@@ -246,7 +246,7 @@ This library provide 2 types of Alert Dialog.
 
 When click cancle button, cancle button method is executed.
 
-```{swift}
+```swift
     func onClickCancelBtn(_ sender: UIButton) {
         self.dialog.removeFromSuperview()
     }
@@ -256,7 +256,7 @@ When click cancle button, cancle button method is executed.
 ##### <a name="list"><a/> Alert list Dialog
 - On ViewController, create a button that pop up check list view when you click on it.
 
- ```{swift}
+ ```swift
 alertListBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 + 80, width: 200, height: 50))
 alertListBtn.setTitle("alertListBtn", for: .normal)
 alertListBtn.backgroundColor = .white
@@ -269,7 +269,7 @@ self.view.addSubview(alertListBtn)
 
 - On click method, setting alert list view's layout
 
- ```{swift}
+ ```swift
     func onClickAlertList(_ sender: UIButton) {
         dialog = MPDialog(MPAlertframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), title: "Alert View title", image: UIImage(named: "jordan"), message: "Alert View message test...............")
 
@@ -282,7 +282,7 @@ self.view.addSubview(alertListBtn)
 ##### <a name="withoutimage"><a/> Alert list without image Dialog
 - On ViewController, create a button that pop up check list view when you click on it.
 
- ```{swift}
+ ```swift
 alertListWithoutImageBtn = UIButton(frame: CGRect(x: self.view.frame.width/2 - 100, y: self.view.frame.height/2 + 150, width: 200, height: 50))
 alertListWithoutImageBtn.setTitle("alertListBtn", for: .normal)
 alertListWithoutImageBtn.backgroundColor = .white
@@ -296,7 +296,7 @@ self.view.addSubview(alertListWithoutImageBtn)
 
 - On click method, setting alert list without image view's layout
 
- ```{swift}
+ ```swift
     func onClickAlertWithoutImage(_ sender: UIButton) {
         dialog = MPDialog(MPAlertframe: CGRect(x: self.view.frame.width/2 - 150, y: self.view.frame.height/2 - 200, width: 300, height: 400), title: "Alert View title", image: nil, message: "Alert View message test...............")
 
